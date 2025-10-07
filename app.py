@@ -5,8 +5,14 @@ import joblib
 st.set_page_config(page_title="Employee Attrition Predictor", page_icon="💼", layout="wide")
 
 # load model & preprocessor
-model = joblib.load("final_attrition_model.pkl")
-preprocessor = joblib.load("data_preprocessor.pkl")
+import cloudpickle
+
+with open("final_attrition_model.pkl", "rb") as f:
+    model = cloudpickle.load(f)
+
+with open("data_preprocessor.pkl", "rb") as f:
+    preprocessor = cloudpickle.load(f)
+
 
 st.title("💼 Employee Attrition Prediction System")
 
